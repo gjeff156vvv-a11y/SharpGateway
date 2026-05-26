@@ -1,0 +1,66 @@
+body {
+    background-color:#C0C0C0;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 15px;
+}
+ 
+.grid-item {
+    box-sizing: border-box;
+    border: solid 1px #000000;
+    text-align:center;
+    font-size: 20px;
+    padding: 0.5em;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.directory{
+    background-color:#808080;
+}
+
+.file{
+    background-color:#A9A9A9
+}
+
+.grid-item:hover {
+    background-color:#DCDCDC;
+}
+
+.grid-item a {
+    color: #000000 ; /* !important принудительно заставит браузер красить текст в черный */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+.top-contener {
+    display: flex;
+    justify-content: space-between; /* Раздвигает заголовок влево, а форму с кнопкой вправо */
+    align-items: center;           /* Выравнивает их ровно по одной горизонтальной линии */
+    margin-bottom: 20px;          /* Делает красивый отступ от этой строки до сетки с файлами */
+}
+.top-contener form button {
+    box-sizing: border-box;
+    border: solid 1px #000000;      /* Черная рамка, как у плиток */
+    background-color: #808080;      /* Темно-серый цвет (как у папок .directory) */
+    color: #000000;                 /* Черный цвет текста */
+    font-size: 18px;                /* Крупный, читаемый шрифт */
+    padding: 10px 25px;             /* Внутренние отступы, чтобы кнопка была объемной */
+    border-radius: 8px;             /* Скругление углов, как у плиток */
+    cursor: pointer;                /* Курсор-указатель при наведении */
+    font-family: sans-serif;        /* Тот же шрифт, что и у всего сайта */
+    transition: background-color 0.2s ease; /* Плавное изменение цвета при наведении */
+}
+.top-contener form button:hover {
+    background-color: #DCDCDC;      /* Светло-серый цвет при наведении, как у .grid-item:hover */
+}
+

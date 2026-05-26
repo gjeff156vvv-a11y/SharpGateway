@@ -1,0 +1,39 @@
+﻿@page 
+@model HttpFileSystem.Pages.IndexModel
+@{
+}
+
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>моя файловая система</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <div class="top-contener">
+            <h1>Текущий путь: @Model.CurrentDirectory.FullName</h1>
+            @if(Model.CurrentDirectory.FullName != "/home" && Model.CurrentDirectory.FullName != "/home/")
+            {
+                <form method="post"> 
+                    <input type="hidden" name="path" value="@Model.CurrentDirectory.Parent.FullName" />
+                    <button type="submit">Назад</button>
+                </form>
+            }
+        </div>
+
+        <h3>Содержимое католога:</h3>
+
+        <div class="grid-container">
+            @foreach (var dir in Model.CurrentDirectory.GetDirectories())
+            {
+                <div class="grid-item directory"><a asp-route-path="@dir.FullName">/@dir.Name</a></div>
+            }
+            @foreach (var dir in Model.CurrentDirectory.GetFiles())
+            {
+                <div class="grid-item file"><a href="?file=@dir.FullName">@dir.Name</a></div>
+            }
+        </div>
+    </body>
+</html>
+
